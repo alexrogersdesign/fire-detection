@@ -1,25 +1,28 @@
 body {
   color: white;
   background: black;
- }
- div {
+}
+
+div {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   padding: 30px;
- }
- input {
+}
+
+input {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   z-index: -1;
- }
- button,
- label,
- ul {
+}
+
+button,
+label,
+ul {
   width: 300px;
   box-sizing: border-box;
   border: solid 1px white;
@@ -28,14 +31,20 @@ body {
   font-size: 24px;
   margin: auto;
   padding: 10px;
- }
- img {
+}
+
+img {
   width: 300px;
   margin-bottom: 25px;
- }
- ul {
+}
+
+ul {
   list-style: none;
   padding: 10px;
   margin-bottom: 25px;
- }
- 
+}
+
+li:not(:last-child) {
+  padding: 10px;
+  border-bottom: solid 1px;
+}

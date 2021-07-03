@@ -2,7 +2,9 @@
   "name": "fire-detection",
   "version": "0.1.0",
   "babel": {
-    "presets": ["@babel/preset-env"],
+    "presets": [
+      "@babel/preset-env"
+    ],
     "plugins": []
   },
   "private": true,
@@ -11,12 +13,17 @@
     "@babel/preset-env": "^7.14.7",
     "@tensorflow-models/mobilenet": "^2.1.0",
     "@tensorflow/tfjs": "^3.7.0",
+    "@tensorflow/tfjs-converter": "^3.7.0",
+    "@tensorflow/tfjs-node": "^3.7.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "node-pre-gyp": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "tfjs-node-save": "0.0.2",
+    "typescript": "^4.3.5",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -43,6 +50,4 @@
       "last 1 safari version"
     ]
   }
-
-
 }
