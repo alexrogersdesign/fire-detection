@@ -1,8 +1,16 @@
 {
   "name": "fire-detection",
   "version": "0.1.0",
+  "babel": {
+    "presets": ["@babel/preset-env"],
+    "plugins": []
+  },
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow/tfjs": "^3.7.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -35,4 +43,6 @@
       "last 1 safari version"
     ]
   }
+
+
 }
