@@ -1,4 +1,4 @@
-/* body {
+/* /* body {
   color: white;
   background: black;
 }
@@ -28,25 +28,24 @@ li:not(:last-child) {
   padding: 10px;
   border-bottom: solid 1px;
 } */
-
+/* 
 img {
   width: 300px;
   margin-bottom: 25px;
-}
+} */
 
-div {
+/* div {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
-  padding: 30px;
-}
+} */
 
-input {
+/* input {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   z-index: -1;
-}
+}  */

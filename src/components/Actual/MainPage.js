@@ -1,4 +1,5 @@
 import React from 'react'
+import { useStyles } from 'react-styles-hook'
 
 // reactstrap components
 import {
@@ -24,21 +25,38 @@ import ProfilePageHeader from 'components/Headers/ProfilePageHeader';
 import LandingPageHeader from 'components/Headers/LandingPageHeader';
 import IndexHeader from 'components/Headers/IndexHeader';
 import MainPageHeader from './MainPageHeader';
+import Predict from './Predict';
+import NavBarLite from './NavBarLite';
 
 export default function MainPage() {
+ 
+  const styles = useStyles({
+    page: {
+      // backgroundColor: "#343a40"
+    },
+    div: {
+      // display: "flex",
+      // flexDirection: "column",
+      // textAlign: "center",
+      // alignItems: "center",
+      // padding: "30px",
+    } 
+  })
+
   return (
-    <div>
-      {/* <IndexNavbar/> */}
-      {/* <IndexHeader/> */}
-      <MainPageHeader/> 
+    <div style={styles.div}>
+      {/* <NavBarLite style={styles.page}/> */}
+      <MainPageHeader style={styles.page}/> 
       <NavBarTop/>
-      <div className="main">
+      {/* <IndexNavbar/> */}
+      <div className="main" style={styles.page}>
         <Container>
         <Row>
           <Col className="ml-auto mr-auto" md="8">
           <h2 className="title">
             Detecting Fire 
           </h2>
+          <Predict/>
           <h5>
             Cum blanditiis eius impedit ut provident aut. Recusandae saepe ipsum est eius laboriosam maiores. Et eius fuga quia a aut quas quod saepe esse.
  

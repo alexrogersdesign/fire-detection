@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import { useStyles } from 'react-styles-hook'
+
+
 
 import {
   Collapse,
@@ -38,20 +41,52 @@ export default function NavBarTop() {
     return () => window.removeEventListener("scroll", updateColor)
   })
 
+  const styles = useStyles({
+    header: {
+      // width: "100%",
+      // height: "15%",
+      // top:-20
+      // borderRadius: 30
+      // flex: 1,
+      // flexDirection: "row",
+      // alignContent: "stretch",
+      // flexGrow: 4,
+      // flexBasis: "auto",
+      // alignItems: "center",
+      // justifyContent: "space-between"
+    },
+    container: {
+      // padding: 5,
+      // top: 0
+    },
+    brand:{
+      // padding: 5
+    },
+    link: {
+      // padding: 5
+    }
+
+  })
+
   return (
     <Navbar 
       className={classnames("fixed-top", color)}
       // color-on-scroll="300"
       expand="lg"
+      // style={styles.header}
     >
-      <Container>
-        <div classnames="navbar-translate">
+      <Container 
+      // style={styles.container}
+      >
+        <div className="navbar-translate">
           <NavbarBrand
           data-placement="bottom"
-          to="/index"
+          to="/home"
           target="_blank"
           title="Detecting Fire With Machine Learning"
-          tag={Link}>
+          tag={Link}
+          // style={styles.brand}
+          >
             Detecting Fire With Machine Learning
           </NavbarBrand>
           <button 
@@ -76,6 +111,29 @@ export default function NavBarTop() {
               <NavLink 
                 data-placement="bottom"
                 target="_blank"
+                href="/predict"
+                title="predict"
+              >
+                <i style= {styles.link} className="nc-icon nc-book-bookmark" /> 
+                &nbsp; Try it out <br/> 
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink 
+                data-placement="bottom"
+                target="_blank"
+                href="https://colab.research.google.com/drive/13mUQ9J170wyLSmsRuPryniJ2VxPM1gIO?usp=sharing"
+                title="How It Works"
+              >
+                <i style= {styles.link} className="nc-icon nc-book-bookmark" /> 
+                &nbsp; How it works <br/> 
+                &nbsp;&nbsp;&nbsp;&nbsp; (Colab Notebook)
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink 
+                data-placement="bottom"
+                target="_blank"
                 href="https://www.linkedin.com/in/alexrogersdesign/"
                 title="Follow me on Linkedin"
               >
@@ -84,7 +142,6 @@ export default function NavBarTop() {
               </NavLink>
             </NavItem>
           </Nav>
-
         </Collapse>
 
       </Container>

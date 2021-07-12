@@ -5,12 +5,11 @@ import * as tf from '@tensorflow/tfjs';
 import {loadGraphModel} from '@tensorflow/tfjs-converter';
 
 import { Button } from 'react-bootstrap';
+import { useStyles } from 'react-styles-hook'
 
 
+import ConfidencePlot from './ConfidencePlot';
 
-const modelUrl = {
-  model: 'https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/seventh-model/model.json',
-  };
 
 function Predict() {
   const reducer = (currentState, event) =>
@@ -36,6 +35,34 @@ function Predict() {
   };
   const [appState, dispatch] = useReducer(reducer, state.initial);
   
+  const modelUrl = {
+    model: 'https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
+    };
+  
+    const styles = useStyles({
+      image: {
+        width: "100%",
+        height: "auto",
+        borderRadius: 30
+      },
+      input: {
+        width: "0.1px",
+        height: "0.1px",
+        opacity: 0,
+        overflow: "hidden",
+        position: "absolute",
+        zIndex: -1,
+      },
+      div: {
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "center",
+        alignItems: "center",
+        padding: "30px",
+      } 
+    })
+  
+
   const load = async () => {
   try {
   next()
@@ -52,7 +79,9 @@ function Predict() {
 
   const processImage = (imageToProcess) => {
   const newImage = tf.browser.fromPixels(imageToProcess)
-  return tf.image.resizeBilinear(newImage, ([IMG_SIZE, IMG_SIZE])).reshape([-1,IMG_SIZE,IMG_SIZE,3])
+  return tf.image.resizeBilinear(newImage, ([IMG_SIZE, IMG_SIZE]))
+                 .reshape([-1,IMG_SIZE,IMG_SIZE,3])
+                 .div(255)
   }
   
   const indentify = async () => {
@@ -65,11 +94,8 @@ function Predict() {
   }
 
   useEffect(()=>{
-  // if (!results) setResponse("")
-  // else results[0] === 0 ? setResponse("Fire") : setResponse("Not Fire")
-  // }
   if (!results) setResponse("")
-  else results > .5 ? setResponse("Fire") : setResponse("Not Fire")
+  else results > .5 ? setResponse("Fire Detected") : setResponse("No Fire Detected")
   }
   ,[results])
 
@@ -84,7 +110,7 @@ function Predict() {
 
   const resetState = () => {
   setImageUrl([])
-  setResults([null])
+  setResults("")
   setResponse("")
   next();
   }
@@ -101,13 +127,27 @@ function Predict() {
 
   const { showImage = false , showResults = false} = state.states[appState]
   return (
-  <div className="App">
-    { showImage &&  <img src={imageUrl} alt="file-preview" ref={imageRef}/>}
+  <div className="App" style={styles.div}>
+    <h1>Evaluate the model</h1>
+    <br/>
+    <h5>Upload your own image <br/> The model will predict if it contains fire</h5>
+    <br/>
+    { showImage &&  <img style={styles.image} src={imageUrl} alt="file-preview" ref={imageRef}/>}
     <Button onClick={buttonProps[appState].action}>{buttonProps[appState].text}</Button>
-    <input type="file" accept="image/*" capture="camera" ref={inputRef} onChange={handleUpload}></input>
-    {
-    <h2>{response}</h2>
-    }
+    <input 
+    type="file" 
+    accept="image/*" 
+    capture="camera" 
+    ref={inputRef} 
+    onChange={handleUpload}
+    style={styles.input}
+    />
+    { results&&
+      <div>
+        <h2>{response}</h2>
+        <ConfidencePlot prediction={results}/>
+      </div>
+      }
   </div>
   );
 }
