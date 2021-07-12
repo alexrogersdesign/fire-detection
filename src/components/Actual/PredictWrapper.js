@@ -10,7 +10,7 @@ export default function PredictWrapper() {
   const styles = useStyles({
     page: {
       backgroundColor: "#343a40",
-      height: "100em"
+      height: "140em"
     },
     component: {
       position: "absolute",
@@ -31,7 +31,7 @@ export default function PredictWrapper() {
       <br/>
       <br/>
       <NavBarTop/>
-      <Predict style={styles.component}/>
+      <Predict style={styles.component} color="#FFFFFF"/>
     </div>
   )
 }

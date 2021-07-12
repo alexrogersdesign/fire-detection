@@ -10,6 +10,7 @@ import Graph from 'components/Actual/Graph';
 import NavBarLite from 'components/Actual/NavBarLite';
 import NavBarTop from 'components/Actual/NavBarTop';
 import PredictWrapper from 'components/Actual/PredictWrapper';
+import Notebook from 'components/Actual/Notebook';
 
 export default function App() {
   return (
@@ -20,6 +21,9 @@ export default function App() {
       </Route>
       {/* <Graph/> */}
       {/* <LandingPage/> */}
+      <Route path="/notebook">
+        <Notebook/>
+      </Route>
       <Route path="/">
         <MainPage/>
       </Route>

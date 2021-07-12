@@ -53,9 +53,6 @@ export default function MainPage() {
         <Container>
         <Row>
           <Col className="ml-auto mr-auto" md="8">
-          <h2 className="title">
-            Detecting Fire 
-          </h2>
           <Predict/>
           <h5>
             Cum blanditiis eius impedit ut provident aut. Recusandae saepe ipsum est eius laboriosam maiores. Et eius fuga quia a aut quas quod saepe esse.
