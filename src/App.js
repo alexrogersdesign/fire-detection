@@ -7,7 +7,6 @@ import Predict from './components/Actual/Predict'
 import LandingPage from 'views/examples/LandingPage';
 import MainPage from 'components/Actual/MainPage';
 import Graph from 'components/Actual/Graph';
-import NavBarLite from 'components/Actual/NavBarLite';
 import NavBarTop from 'components/Actual/NavBarTop';
 import PredictWrapper from 'components/Actual/PredictWrapper';
 import Notebook from 'components/Actual/Notebook';

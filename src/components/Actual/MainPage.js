@@ -26,7 +26,6 @@ import LandingPageHeader from 'components/Headers/LandingPageHeader';
 import IndexHeader from 'components/Headers/IndexHeader';
 import MainPageHeader from './MainPageHeader';
 import Predict from './Predict';
-import NavBarLite from './NavBarLite';
 
 export default function MainPage() {
  

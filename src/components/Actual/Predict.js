@@ -44,16 +44,22 @@ function Predict({color}) {
   
     const styles = useStyles({
       image: {
-        width: "80%",
+        width: "50%",
         height: "auto",
-        borderRadius: 30
+        borderRadius: 30,
+        flexShrink: 0,
+        flexGrow: 2,
+        // alignSelf: "flex-end",
+        // top: 80,
+        order: -1,
+        flexBasis: 0
       },
       input: {
         width: "0.1px",
         height: "0.1px",
         opacity: 0,
         overflow: "hidden",
-        position: "absolute",
+        // position: "absolute",
         zIndex: -1,
       },
       div: {
@@ -62,14 +68,53 @@ function Predict({color}) {
         textAlign: "center",
         alignItems: "center",
         padding: "30px",
+        // width: "100%"
       }, 
       textColor: {
         color: color? color : "#66615b" 
       },
       btn: {
         backgroundColor: "#a84a32",
-        border: 0,
-        marginTop: 15,
+        borderColor: "#a84a32",
+        borderRadius: 6
+        // border: 0,
+        // marginTop: 15,
+      },
+      form: {
+        // marginTop: 20
+      },
+      textgroup: {
+        paddingBottom: 30
+      },
+      urlForm: {
+        display: "flex",
+        flexDirection: "row",
+        // textAlign: "center",
+        alignItems: "baseline",
+        alignSelf: "center",
+        alignContent: "space-between",
+        justifyContent: "center",
+        margin: 5
+        // padding: "30px",
+      },
+      graphics: { 
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        alignSelf: "center",
+        alignContent: "center",
+        flexWrap: "nowrap",
+        flexFlow: "center",
+        justifyContent: "space-around",
+        marginTop: 20
+      },
+      chart: {
+        // position: "absolute",
+        // top: 30,
+        // height: "40%",
+        // width: "auto",
+        flexGrow: 3,
+        flexShrink: 2,
       }
     })
   
@@ -127,9 +172,9 @@ function Predict({color}) {
   }
 
   const buttonProps = {
-  initial: { text: "Load Model", action: load },
+  initial: { text: "Begin", action: load },
   loadingModel: { text: "Loading Model" , action: ()=> {} },
-  modelReady: { text: "Upload Image", action: ()=> inputRef.current.click() },
+  modelReady: { text: "Upload Image File", action: ()=> inputRef.current.click() },
   imageReady: { text: "Identify", action: identify},
   identifying: { text: "Identifying", action: () => {} },
   complete: { text: "Reset", action: resetState }
@@ -140,40 +185,42 @@ function Predict({color}) {
   return (
   <div className="App" style={{...styles.div, ...styles.textColor}}>
     <h1>Evaluate the model</h1>
-    <br/>
-    <h5>Upload your own image <br/> The model will predict if it contains fire</h5>
+    <h5 style={styles.textgroup}>Upload your own image <br/> The model will predict if it contains fire</h5>
     <Button style={styles.btn} onClick={buttonProps[appState].action}>{buttonProps[appState].text}</Button>
-    <br/>
-    { results&&
-      <div>
-        <ConfidencePlot color={color} prediction={results}/>
+    <div style={styles.graphics} >
+      { results&&
+        <div>
+          <ConfidencePlot color={color} prediction={results} style={styles.chart}/>
+        </div>
+        }
+      { showImage &&  <img style={styles.image} src={imageUrl} alt="file-preview" ref={imageRef} crossorigin='anonymous'/>}
+      <div style={styles.form}>
+        <input 
+        type="file" 
+        accept="image/*" 
+        capture="camera" 
+        ref={inputRef} 
+        onChange={handleUpload}
+        style={styles.input}
+        />
+        {showUrl && 
+        <div style={styles.formUrl}>
+          <Form inline >
+            <FormGroup style={styles.formUrl}> 
+              <Input
+                type="url"
+                name="url"
+                id="exampleUrl"
+                placeholder="http://imageurl.com"
+                onChange={(e) => setFormUrl(e.target.value)}
+              />
+            <Button style={styles.btn} onClick={handleUrlUpload}>Upload URL</Button>
+            </FormGroup>
+          </Form>
+        </div>
+        }
       </div>
-      }
-    { showImage &&  <img style={styles.image} src={imageUrl} alt="file-preview" ref={imageRef}/>}
-    <input 
-    type="file" 
-    accept="image/*" 
-    capture="camera" 
-    ref={inputRef} 
-    onChange={handleUpload}
-    style={styles.input}
-    />
-    {showUrl && 
-    <div>
-      <Form inline>
-        <FormGroup>
-          <Input
-            type="url"
-            name="url"
-            id="exampleUrl"
-            placeholder="Paste image url"
-            onChange={(e) => setFormUrl(e.target.value)}
-          />
-        <Button style={styles.btn} onClick={handleUrlUpload}>Upload URL</Button>
-        </FormGroup>
-      </Form>
     </div>
-    }
   </div>
   );
 }

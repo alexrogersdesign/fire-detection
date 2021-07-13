@@ -13,7 +13,6 @@ import {
   NavLink,
   Nav,
   Container,
-  Button,
   } from "reactstrap";
   
 
@@ -137,8 +136,8 @@ export default function NavBarTop() {
                 title="How It Works"
               >
                 <i style= {styles.link} className="nc-icon nc-book-bookmark" /> 
-                &nbsp; How it works <br/> 
-                &nbsp;&nbsp;&nbsp;&nbsp; (Colab Notebook)
+                &nbsp; Model Information <br/> 
+                
               </NavLink>
             </NavItem>
             <NavItem>

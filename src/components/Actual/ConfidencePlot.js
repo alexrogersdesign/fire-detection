@@ -29,6 +29,7 @@ export default function ConfidenceChart({prediction, color}) {
       // flexGrow: 4,
       // alignItems: "center",
       // justifyContent: "center",
+      padding: 5,
     },
     legend: {
       position:"absolute",
@@ -54,8 +55,14 @@ export default function ConfidenceChart({prediction, color}) {
   }]
 
   const plotLayout ={
-    width: 400,
-    height: 400,
+    width: 300,
+    height: 300,
+    margin: {
+      t: 10,
+      r: 50,
+      // l: 50
+      
+    },
     // title: "Model Confidence",
     font: {
       size: 14,
