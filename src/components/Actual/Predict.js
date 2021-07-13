@@ -1,5 +1,8 @@
 import '../../App.css';
 import React, { useReducer, useRef,  useState, useEffect } from 'react';
+import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
+
 import * as tf from '@tensorflow/tfjs';
 
 import {loadGraphModel} from '@tensorflow/tfjs-converter';
@@ -18,6 +21,7 @@ function Predict({color}) {
   const [model, setModel] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [results, setResults] = useState(null);
+  const [formUrl, setFormUrl] = useState("");
   const inputRef = useRef();
   const imageRef = useRef();
   
@@ -26,7 +30,7 @@ function Predict({color}) {
     states: {
       initial: { on: { next: "loadingModel" } },
       loadingModel: { on: { next: "modelReady" } },
-      modelReady: { on: { next: "imageReady" } },
+      modelReady: { on: { next: "imageReady" } , showUrl: true },
       imageReady: { on: { next: "identifying" }, showImage: true },
       identifying: { on: { next: "complete" } },
       complete: { on: { next: "modelReady" }, showImage: true, showResults: true }
@@ -91,13 +95,19 @@ function Predict({color}) {
                  .div(255)
   }
   
-  const indentify = async () => {
+  const identify = async () => {
   next();
   const imageTensor = processImage(imageRef.current)
   const results = await model.predict(imageTensor).data();
   console.log(results)
   setResults(results)
   next()
+  }
+
+  const handleUrlUpload= event => {
+    setImageUrl(formUrl)
+    console.log(event.target)
+    next()
   }
 
 
@@ -120,13 +130,13 @@ function Predict({color}) {
   initial: { text: "Load Model", action: load },
   loadingModel: { text: "Loading Model" , action: ()=> {} },
   modelReady: { text: "Upload Image", action: ()=> inputRef.current.click() },
-  imageReady: { text: "Identify", action: indentify},
+  imageReady: { text: "Identify", action: identify},
   identifying: { text: "Identifying", action: () => {} },
   complete: { text: "Reset", action: resetState }
   }
 
 
-  const { showImage = false , showResults = false} = state.states[appState]
+  const { showImage = false , showResults = false, showUrl} = state.states[appState]
   return (
   <div className="App" style={{...styles.div, ...styles.textColor}}>
     <h1>Evaluate the model</h1>
@@ -148,6 +158,22 @@ function Predict({color}) {
     onChange={handleUpload}
     style={styles.input}
     />
+    {showUrl && 
+    <div>
+      <Form inline>
+        <FormGroup>
+          <Input
+            type="url"
+            name="url"
+            id="exampleUrl"
+            placeholder="Paste image url"
+            onChange={(e) => setFormUrl(e.target.value)}
+          />
+        <Button style={styles.btn} onClick={handleUrlUpload}>Upload URL</Button>
+        </FormGroup>
+      </Form>
+    </div>
+    }
   </div>
   );
 }
