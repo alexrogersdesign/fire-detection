@@ -4,26 +4,12 @@ import { useStyles } from 'react-styles-hook'
 // reactstrap components
 import {
   Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardTitle,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
-  Navbar,
 } from "reactstrap";
 
 import NavBarTop from './NavBarTop';
-import IndexNavbar from 'components/Navbars/IndexNavbar';
-import ProfilePageHeader from 'components/Headers/ProfilePageHeader';
-import LandingPageHeader from 'components/Headers/LandingPageHeader';
-import IndexHeader from 'components/Headers/IndexHeader';
 import MainPageHeader from './MainPageHeader';
 import Predict from './Predict';
 
@@ -44,10 +30,8 @@ export default function MainPage() {
 
   return (
     <div style={styles.div}>
-      {/* <NavBarLite style={styles.page}/> */}
       <MainPageHeader style={styles.page}/> 
       <NavBarTop/>
-      {/* <IndexNavbar/> */}
       <div className="main" style={styles.page}>
         <Container>
         <Row>
