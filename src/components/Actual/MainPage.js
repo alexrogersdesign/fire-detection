@@ -55,11 +55,7 @@ export default function MainPage() {
           <Col className="ml-auto mr-auto" md="8">
           <Predict/>
           <h5>
-            Cum blanditiis eius impedit ut provident aut. Recusandae saepe ipsum est eius laboriosam maiores. Et eius fuga quia a aut quas quod saepe esse.
- 
-            Nobis qui iure assumenda vel quo nisi autem saepe. Nostrum repudiandae repudiandae laboriosam quas. Et aperiam corrupti. Voluptates eius sequi architecto necessitatibus molestiae ut. In et suscipit. Non numquam minima veniam cupiditate et facere dolor vero.
-            
-            Vel delectus iusto ratione doloremque quod ea nam ipsa ratione. Veniam repudiandae dolore ut. Iusto ut dicta numquam ducimus itaque eaque placeat consequatur. Tempore et quidem non.
+           Using machine learning to indentify fires in forest imagry. With forest fires growning more common 
           </h5>
           <Button
           className="btn-round"

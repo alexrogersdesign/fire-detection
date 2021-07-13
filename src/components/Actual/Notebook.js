@@ -1,13 +1,23 @@
 import React from 'react'
 
-import JupyterViewer from "react-jupyter-notebook";
+import { IpynbRenderer } from "react-ipynb-renderer";
 import notebook from "../../assets/notebook/Fire_Detection_v2.json"
+
+// Jupyter theme
+import "react-ipynb-renderer/dist/styles/monokai.css";
+// Formula renderer
+import 'katex/dist/katex.min.css';
 
 
 export default function Notebook() {
   return (
     <div>
-      <JupyterViewer rawlpynb={notebook}/>
+      <IpynbRenderer 
+      ipynb={notebook}
+      syntaxTheme="xonokai"
+      language="python"
+      bgTransparent={true}
+      />
     </div>
   )
 }

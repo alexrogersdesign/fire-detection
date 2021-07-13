@@ -111,18 +111,29 @@ export default function NavBarTop() {
               <NavLink 
                 data-placement="bottom"
                 target="_blank"
-                href="/predict"
-                title="predict"
+                href="/"
+                title="home"
               >
                 <i style= {styles.link} className="nc-icon nc-book-bookmark" /> 
-                &nbsp; Try it out <br/> 
+                &nbsp; Home <br/> 
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink 
                 data-placement="bottom"
                 target="_blank"
-                href="https://colab.research.google.com/drive/13mUQ9J170wyLSmsRuPryniJ2VxPM1gIO?usp=sharing"
+                href="/predict"
+                title="predict"
+              >
+                <i style= {styles.link} className="nc-icon nc-book-bookmark" /> 
+                &nbsp; Test the model <br/> 
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink 
+                data-placement="bottom"
+                target="_blank"
+                href="https://colab.research.google.com/drive/1Wzi-dnEtzJYu1R3LrwTtIHnFTHWRPOhq?usp=sharing"
                 title="How It Works"
               >
                 <i style= {styles.link} className="nc-icon nc-book-bookmark" /> 
