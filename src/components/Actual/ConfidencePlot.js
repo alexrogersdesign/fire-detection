@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { PopoverContent } from 'react-bootstrap';
+import {  } from 'react-bootstrap';
 import { useStyles } from 'react-styles-hook'
 import Plot from 'react-plotly.js';
 

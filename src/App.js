@@ -3,11 +3,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
-import Predict from './components/Actual/Predict'
-import LandingPage from 'views/examples/LandingPage';
+
 import MainPage from 'components/Actual/MainPage';
-import Graph from 'components/Actual/Graph';
-import NavBarTop from 'components/Actual/NavBarTop';
 import PredictWrapper from 'components/Actual/PredictWrapper';
 import Notebook from 'components/Actual/Notebook';
 
@@ -18,8 +15,6 @@ export default function App() {
       <Route path="/predict">
         <PredictWrapper/>
       </Route>
-      {/* <Graph/> */}
-      {/* <LandingPage/> */}
       <Route path="/notebook">
         <Notebook/>
       </Route>

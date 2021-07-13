@@ -1,6 +1,6 @@
 import '../../App.css';
-import React, { useReducer, useRef,  useState, useEffect } from 'react';
-import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import React, { useReducer, useRef,  useState } from 'react';
+import { Form, FormGroup, Input } from 'reactstrap';
 
 
 import * as tf from '@tensorflow/tfjs';
