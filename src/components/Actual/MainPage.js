@@ -35,18 +35,18 @@ export default function MainPage() {
       <div className="main" style={styles.page}>
         <Container>
         <Row>
-          <Col className="ml-auto mr-auto" md="8">
+          {/* <Col className="ml-auto mr-auto" md="8">
           <Predict/>
           <h5>
-           Using machine learning to indentify fires in forest imagry. With forest fires growning more common 
+           Using machine learning to indentify fires in forest imagry. 
           </h5>
           <Button
           className="btn-round"
           color="info"
           />
-          </Col>
+          </Col> */}
         </Row>
-        <Row>
+        {/* <Row>
           <Col md="3">
           <div className="info">
             <div className="description">
@@ -60,7 +60,7 @@ export default function MainPage() {
           
           </div>
           </Col>
-        </Row>
+        </Row> */}
         </Container>
       </div>
     </div>

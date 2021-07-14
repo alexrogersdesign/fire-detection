@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { useStyles } from 'react-styles-hook'
 
-
-
 import {
   Collapse,
   NavbarBrand,
@@ -13,8 +11,9 @@ import {
   NavLink,
   Nav,
   Container,
-  } from "reactstrap";
-  
+} from "reactstrap";
+
+const colabURL = "https://colab.research.google.com/drive/1Wzi-dnEtzJYu1R3LrwTtIHnFTHWRPOhq?usp=sharing"
 
 export default function NavBarTop() {
   const [color, setColor] = useState("navbar-transparent")
@@ -80,8 +79,7 @@ export default function NavBarTop() {
         <div className="navbar-translate">
           <NavbarBrand
           data-placement="bottom"
-          to="/home"
-          target="_blank"
+          to="/"
           title="Detecting Fire With Machine Learning"
           tag={Link}
           // style={styles.brand}
@@ -109,7 +107,6 @@ export default function NavBarTop() {
             <NavItem>
               <NavLink 
                 data-placement="bottom"
-                target="_blank"
                 href="/"
                 title="home"
               >
@@ -120,7 +117,6 @@ export default function NavBarTop() {
             <NavItem>
               <NavLink 
                 data-placement="bottom"
-                target="_blank"
                 href="/predict"
                 title="predict"
               >
@@ -132,7 +128,7 @@ export default function NavBarTop() {
               <NavLink 
                 data-placement="bottom"
                 target="_blank"
-                href="https://colab.research.google.com/drive/1Wzi-dnEtzJYu1R3LrwTtIHnFTHWRPOhq?usp=sharing"
+                href= {colabURL}
                 title="How It Works"
               >
                 <i style= {styles.link} className="nc-icon nc-book-bookmark" /> 
@@ -140,7 +136,7 @@ export default function NavBarTop() {
                 
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink 
                 data-placement="bottom"
                 target="_blank"
@@ -150,7 +146,7 @@ export default function NavBarTop() {
                 <i className="fa fa-linkedin"/>
                 <p className="d-lg-none">Linkedin</p>
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
 
