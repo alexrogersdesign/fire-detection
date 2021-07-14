@@ -1,6 +1,9 @@
 {
   "name": "fire-detection",
   "version": "0.1.1",
+  "engines": {
+    "node": "14.x"
+  },
   "babel": {
     "presets": [
       "@babel/preset-env"
