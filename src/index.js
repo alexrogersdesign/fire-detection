@@ -4,22 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// import "assets/css/bootstrap.min.css";
-// import "assets/css/paper-kit.css";
-// // import "assets/css/paper-kit.min.css";
-// // import "assets/css/paper-kit.css.map";
-// import "assets/demo/demo.css";
-
-// import "assets/css/bootstrap.min.css";
 import "assets/scss/paper-kit.scss";
 import "assets/demo/demo.css";
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-mui'
+
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_CENTER,
+  timeout: 5000,
+  offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.SCALE
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <AlertProvider template={AlertTemplate} {...options}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </AlertProvider>,
   document.getElementById('root')
+  
 );
 
 // If you want to start measuring performance in your app, pass a function

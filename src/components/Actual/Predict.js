@@ -1,7 +1,6 @@
 import '../../App.css';
 import React, { useReducer, useRef,  useState, useEffect } from 'react';
-import { Form, FormGroup, Input } from 'reactstrap';
-
+import { Form, FormFeedback, FormGroup, Input, Alert } from 'reactstrap';
 
 import * as tf from '@tensorflow/tfjs';
 
@@ -9,9 +8,13 @@ import {loadGraphModel} from '@tensorflow/tfjs-converter';
 
 import { Button } from 'react-bootstrap';
 import { useStyles } from 'react-styles-hook'
+import { useValidateImageURL } from "use-validate-image-url";
+import { useAlert } from 'react-alert'
+
 
 
 import ConfidencePlot from './ConfidencePlot';
+import ProgressBar from './ProgressBar';
 
 
 function Predict({color}) {
@@ -23,17 +26,20 @@ function Predict({color}) {
   const [results, setResults] = useState(null);
   const [formUrl, setFormUrl] = useState("");
   const [loadProgress, setLoadProgress] = useState("");
+  // const [urlStatus , setUrlStatus] = useState(true);
+  const urlStatus = useValidateImageURL(formUrl)
   const inputRef = useRef();
   const imageRef = useRef();
+  const alert = useAlert();
   
   const state = {
     initial: "initial",
     states: {
       initial: { on: { next: "loadingModel" } },
-      loadingModel: { on: { next: "modelReady" } },
+      loadingModel: { on: { next: "modelReady" }, showProgress: true },
       modelReady: { on: { next: "imageReady" } , showUrl: true },
       imageReady: { on: { next: "identifying" }, showImage: true },
-      identifying: { on: { next: "complete" } },
+      identifying: { on: { next: "complete" }, showProgress: true },
       complete: { on: { next: "modelReady" }, showImage: true, showResults: true }
     }
   };
@@ -116,24 +122,25 @@ function Predict({color}) {
         // width: "auto",
         flexGrow: 3,
         flexShrink: 2,
-      }
+      },
+      progress: {
+        width: "20%",
+        height: "auto",
+        flexShrink: 1,
+        flexGrow: 1,
+        // flexBasis: 200,
+        // padding: 10,
+        margin: "2%"
+      },
     })
   
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
-
 
   const load = async () => {
   try {
   next()
-  const model = await loadGraphModel(modelUrl.model, {onProgress: (p => setLoadProgress(p))} );
+  const model = await loadGraphModel(modelUrl.model, {onProgress: (p => setLoadProgress(p * 100))} );
   next()
   setModel(model);
-  console.log("Load model success")
   }
   catch (err) {
   console.log(err);
@@ -152,15 +159,22 @@ function Predict({color}) {
   next();
   const imageTensor = processImage(imageRef.current)
   const results = await model.predict(imageTensor).data();
-  console.log(results)
   setResults(results)
   next()
   }
 
-  const handleUrlUpload= event => {
-    setImageUrl(formUrl)
-    console.log(event.target)
-    next()
+
+
+  const handleUrlUpload= async (event) => {
+    
+    if (urlStatus === "valid"){
+      setImageUrl(formUrl)
+      console.log(event.target)
+      next()
+    }
+    else {
+      alert.show('This Url Is Not A Valid Image')
+    }   
   }
 
 
@@ -189,19 +203,22 @@ function Predict({color}) {
   }
 
 
-  const { showImage = false , showResults = false, showUrl} = state.states[appState]
+  const { showImage = false , showResults = false, showUrl = false, showProgress = false} = state.states[appState]
   return (
   <div className="App" style={{...styles.div, ...styles.textColor}}>
     <h1>Evaluate the model</h1>
     <h5 style={styles.textgroup}>Upload your own image <br/> The model will predict if it contains fire</h5>
-    <Button style={styles.btn} onClick={buttonProps[appState].action}>{buttonProps[appState].text}</Button>
+    { showProgress && <ProgressBar value={loadProgress} style={styles.progress}/>}
+    <Button style={styles.btn} onClick={buttonProps[appState].action}>
+      {buttonProps[appState].text}
+    </Button>
     <div style={styles.graphics} >
       { results&&
         <div>
           <ConfidencePlot color={color} prediction={results} style={styles.chart}/>
         </div>
         }
-      { showImage &&  <img style={styles.image} src={imageUrl} alt="file-preview" ref={imageRef} crossorigin='anonymous'/>}
+      { showImage &&  <img style={styles.image} src={imageUrl} alt="file-preview" ref={imageRef} crossOrigin='anonymous'/>}
       <div style={styles.form}>
         <input 
         type="file" 
@@ -220,8 +237,10 @@ function Predict({color}) {
                 name="url"
                 id="exampleUrl"
                 placeholder="http://imageurl.com"
+                // invalid={urlStatus === "invalid"}
                 onChange={(e) => setFormUrl(e.target.value)}
               />
+              <FormFeedback>Invalid Url</FormFeedback>
             <Button style={styles.btn} onClick={handleUrlUpload}>Upload URL</Button>
             </FormGroup>
           </Form>
