@@ -11,9 +11,10 @@ import {
 
 import NavBarTop from './NavBarTop';
 import MainPageHeader from './MainPageHeader';
-import Predict from './Predict';
 import DemoFooter from 'components/Footers/DemoFooter';
 import SectionProgress from 'views/index-sections/SectionProgress';
+import Footer from './Footer';
+import Predict from './Predict';
 
 
 export default function MainPage() {
@@ -34,22 +35,13 @@ export default function MainPage() {
   return (
     <div style={styles.div}>
       <MainPageHeader style={styles.page}/> 
-      <NavBarTop/>
-      <SectionProgress/>
-      <DemoFooter/>
+      <NavBarTop transitionPosition={200}/>
       <div className="main" style={styles.page}>
         <Container>
         <Row>
-          {/* <Col className="ml-auto mr-auto" md="8">
+          <Col className="ml-auto mr-auto" md="8">
           <Predict/>
-          <h5>
-           Using machine learning to indentify fires in forest imagry. 
-          </h5>
-          <Button
-          className="btn-round"
-          color="info"
-          />
-          </Col> */}
+          </Col>
         </Row>
         {/* <Row>
           <Col md="3">
@@ -68,6 +60,7 @@ export default function MainPage() {
         </Row> */}
         </Container>
       </div>
+      <Footer/>
     </div>
   )
 }

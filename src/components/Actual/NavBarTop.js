@@ -15,7 +15,7 @@ import {
 
 const colabURL = "https://colab.research.google.com/drive/1Wzi-dnEtzJYu1R3LrwTtIHnFTHWRPOhq?usp=sharing"
 
-export default function NavBarTop() {
+export default function NavBarTop({transitionPosition}) {
   const [color, setColor] = useState("navbar-transparent")
   const [visible, setVisible] = useState(false)
 
@@ -26,12 +26,12 @@ export default function NavBarTop() {
   useEffect(()=>{
     const updateColor = () => {
       if (
-        document.documentElement.scrollTop  > 299 ||
-        document.body.scrollTop > 299
+        document.documentElement.scrollTop  > transitionPosition - 1 ||
+        document.body.scrollTop > transitionPosition - 1
       ){setColor("")}
       else if (
-        document.documentElement.scrollTop < 300 ||
-        document.body.scrollTop < 300
+        document.documentElement.scrollTop < transitionPosition  ||
+        document.body.scrollTop < transitionPosition
       )
       {setColor("navbar-transparent")}
     }
@@ -42,16 +42,6 @@ export default function NavBarTop() {
   const styles = useStyles({
     header: {
       // width: "100%",
-      // height: "15%",
-      // top:-20
-      // borderRadius: 30
-      // flex: 1,
-      // flexDirection: "row",
-      // alignContent: "stretch",
-      // flexGrow: 4,
-      // flexBasis: "auto",
-      // alignItems: "center",
-      // justifyContent: "space-between"
     },
     container: {
       // padding: 5,
@@ -63,7 +53,6 @@ export default function NavBarTop() {
     link: {
       // padding: 5
     }
-
   })
 
   return (

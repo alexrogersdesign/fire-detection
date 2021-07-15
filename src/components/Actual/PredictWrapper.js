@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStyles } from 'react-styles-hook'
+import Footer from './Footer'
 
 
 import NavBarTop from './NavBarTop'
@@ -30,8 +31,9 @@ export default function PredictWrapper() {
       <br/>
       <br/>
       <br/>
-      <NavBarTop/>
+      <NavBarTop transitionPosition={50}/>
       <Predict style={styles.component} color="#FFFFFF"/>
+      {/* <Footer/> */}
     </div>
   )
 }

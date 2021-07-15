@@ -1,6 +1,6 @@
 import '../../App.css';
-import React, { useReducer, useRef,  useState, useEffect } from 'react';
-import { Form, FormFeedback, FormGroup, Input, Alert } from 'reactstrap';
+import React, { useReducer, useRef,  useState} from 'react';
+import { Form, FormFeedback, FormGroup, Input } from 'reactstrap';
 
 import * as tf from '@tensorflow/tfjs';
 
@@ -156,20 +156,20 @@ function Predict({color}) {
   }
   
   const identify = async () => {
+  setLoadProgress(25)
   next();
   const imageTensor = processImage(imageRef.current)
   const results = await model.predict(imageTensor).data();
+  setTimeout(()=> setLoadProgress(75), 2000)
   setResults(results)
   next()
   }
-
 
 
   const handleUrlUpload= async (event) => {
     
     if (urlStatus === "valid"){
       setImageUrl(formUrl)
-      console.log(event.target)
       next()
     }
     else {
