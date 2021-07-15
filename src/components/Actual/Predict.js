@@ -1,5 +1,5 @@
 import '../../App.css';
-import React, { useReducer, useRef,  useState } from 'react';
+import React, { useReducer, useRef,  useState, useEffect } from 'react';
 import { Form, FormGroup, Input } from 'reactstrap';
 
 
@@ -22,6 +22,7 @@ function Predict({color}) {
   const [imageUrl, setImageUrl] = useState(null);
   const [results, setResults] = useState(null);
   const [formUrl, setFormUrl] = useState("");
+  const [loadProgress, setLoadProgress] = useState("");
   const inputRef = useRef();
   const imageRef = useRef();
   
@@ -118,11 +119,18 @@ function Predict({color}) {
       }
     })
   
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
+
 
   const load = async () => {
   try {
   next()
-  const model = await loadGraphModel(modelUrl.model);
+  const model = await loadGraphModel(modelUrl.model, {onProgress: (p => setLoadProgress(p))} );
   next()
   setModel(model);
   console.log("Load model success")
