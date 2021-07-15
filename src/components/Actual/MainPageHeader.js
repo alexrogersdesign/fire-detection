@@ -21,13 +21,13 @@ export default function MainPageHeader() {
                 <div className="fog-low">
                 <img
                   alt="..."
-                  src={require("assets/img/fog-low.png").default}
+                  src={require("assets/img/actual/fog-low.png").default}
                 />
                 </div>
                 <div className="fog-low right">
                   <img
                     alt="..."
-                    src={require("assets/img/fog-low.png").default}
+                    src={require("assets/img/actual/fog-low.png").default}
                   />
                 </div>
               </div>
@@ -41,7 +41,7 @@ export default function MainPageHeader() {
             className="moving-clouds"
             style={{
               backgroundImage:
-                "url(" + require("assets/img/clouds.png").default + ")",
+                "url(" + require("assets/img/actual/clouds.png").default + ")",
             }}
           />
         <h6 className="category category-absolute">

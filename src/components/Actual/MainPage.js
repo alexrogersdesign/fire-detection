@@ -12,6 +12,9 @@ import {
 import NavBarTop from './NavBarTop';
 import MainPageHeader from './MainPageHeader';
 import Predict from './Predict';
+import DemoFooter from 'components/Footers/DemoFooter';
+import SectionProgress from 'views/index-sections/SectionProgress';
+
 
 export default function MainPage() {
  
@@ -32,6 +35,8 @@ export default function MainPage() {
     <div style={styles.div}>
       <MainPageHeader style={styles.page}/> 
       <NavBarTop/>
+      <SectionProgress/>
+      <DemoFooter/>
       <div className="main" style={styles.page}>
         <Container>
         <Row>
