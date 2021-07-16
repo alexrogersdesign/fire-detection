@@ -46,7 +46,8 @@ function Predict({color}) {
   const [appState, dispatch] = useReducer(reducer, state.initial);
   
   const modelUrl = {
-    model: 'https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
+    // model: 'https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
+    model: 'http://localhost:8080/htts://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
     };
   
     const styles = useStyles({
