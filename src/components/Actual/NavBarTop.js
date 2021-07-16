@@ -69,11 +69,11 @@ export default function NavBarTop({transitionPosition}) {
           <NavbarBrand
           data-placement="bottom"
           to="/"
-          title="Detecting Fire With Machine Learning"
+          title="Detecting Forest Fires With Computer Vision"
           tag={Link}
           // style={styles.brand}
           >
-            Detecting Fire With Machine Learning
+            Detecting Forest Fires With Computer Vision
           </NavbarBrand>
           <button 
             aria-expanded={visible}

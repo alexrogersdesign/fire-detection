@@ -10,9 +10,9 @@ export default function MainPageHeader() {
      flexFlow: "column nowrap"
    },
    header: {
-    display: "flex",
-    flexGrow: 0,
-    flexShrink: 3
+    // display: "flex",
+    // flexGrow: 0,
+    // flexShrink: 3
 
    }
   
