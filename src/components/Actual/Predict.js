@@ -47,7 +47,8 @@ function Predict({color}) {
   
   const modelUrl = {
     // model: 'https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
-    model: 'http://localhost:8080/htts://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
+    // model: 'http://localhost:8080/https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
+    model: 'file://src/assets/model/final-first/model.json',
     };
   
     const styles = useStyles({
@@ -139,7 +140,7 @@ function Predict({color}) {
   const load = async () => {
   try {
   next()
-  const model = await loadGraphModel(modelUrl.model, {onProgress: (p => setLoadProgress(p * 100))} );
+  const model = await tf.loadGraphModel(modelUrl.model, {onProgress: (p => setLoadProgress(p * 100))} );
   next()
   setModel(model);
   }
