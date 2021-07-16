@@ -44,13 +44,7 @@ function Predict({color}) {
     }
   };
   const [appState, dispatch] = useReducer(reducer, state.initial);
-  
-  const modelUrl = {
-    // model: 'https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
-    // model: 'http://localhost:8080/https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
-    model: 'file://src/assets/model/final-first/model.json',
-    };
-  
+    
     const styles = useStyles({
       image: {
         width: "50%",
@@ -139,9 +133,15 @@ function Predict({color}) {
   const modelOptions = {
     onProgress: (p => setLoadProgress(p * 100)),
     requestInit: {
-      headers: new Headers().
+      headers: new Headers().append('Origin', 'herokuapp.com')
     }
   }
+
+  const modelUrl = {
+    model: 'https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
+    // model: 'http://localhost:8080/https://arogerscapstone.blob.core.windows.net/capstone-tensorflow/final-first/model.json',
+    // model: 'file://src/assets/model/final-first/model.json',
+    };
 
   const load = async () => {
   try {
