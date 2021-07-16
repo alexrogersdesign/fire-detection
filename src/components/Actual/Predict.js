@@ -135,12 +135,18 @@ function Predict({color}) {
         margin: "2%"
       },
     })
-  
+
+  const modelOptions = {
+    onProgress: (p => setLoadProgress(p * 100)),
+    requestInit: {
+      headers: new Headers().
+    }
+  }
 
   const load = async () => {
   try {
   next()
-  const model = await tf.loadGraphModel(modelUrl.model, {onProgress: (p => setLoadProgress(p * 100))} );
+  const model = await tf.loadGraphModel(modelUrl.model, modelOptions);
   next()
   setModel(model);
   }
