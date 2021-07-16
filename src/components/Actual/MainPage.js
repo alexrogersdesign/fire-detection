@@ -11,8 +11,6 @@ import {
 
 import NavBarTop from './NavBarTop';
 import MainPageHeader from './MainPageHeader';
-import DemoFooter from 'components/Footers/DemoFooter';
-import SectionProgress from 'views/index-sections/SectionProgress';
 import Footer from './Footer';
 import Predict from './Predict';
 

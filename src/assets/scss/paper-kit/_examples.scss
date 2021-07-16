@@ -156,8 +156,9 @@
     margin: 0 auto;
     position: relative;
     text-align: center;
-    color: #FFFFFF;
+    color: #FFeeFF;
     display: block;
+    flex: 1 1;
 
     .type{
         position: absolute;
@@ -173,15 +174,15 @@
 }
 
 .presentation-title{
-    font-size: 8em;
+    font-size: 7em;
     font-weight: 700;
     margin: 0;
     color: #FFFFFF;
     background: #fbf8ec;
-    background: -moz-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-    background: -webkit-linear-gradient(top, #FFFFFF 35%,#4e6773 100%);
-    background: -ms-linear-gradient(top, #FFFFFF 35%,#4e6773 100%);
-    background: linear-gradient(to bottom, #FFFFFF 35%,#4e6773 100%);
+    background: -moz-linear-gradient(top, #c27d6e 35%, #4e6773 100%);
+    background: -webkit-linear-gradient(top, #c27d6e 35%,#4e6773 100%);
+    background: -ms-linear-gradient(top, #c27d6e 35%,#4e6773 100%);
+    background: linear-gradient(to bottom, #d1725c 15%,#4e6773 100%);
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -214,8 +215,9 @@
     bottom: 0;
     margin-left: -35%;
     margin-bottom: -50px;
+    // height: 240px;
     width: 110%;
-    opacity: .85;
+    opacity: .65;
 
     img{
         width: 100%;
@@ -223,12 +225,13 @@
 
     &.right{
         margin-left: 30%;
-        opacity: 1;
+        opacity: .5;
     }
 }
 .page-header{
     .content-center{
         margin-top: 85px;
+        display: flex;
     }
 }
 .moving-clouds{
